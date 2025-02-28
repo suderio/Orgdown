@@ -1,4 +1,4 @@
-# Markdown Tangle - VSCode Extension
+# Orgdown - VSCode Extension
 
 ![Build Status](https://github.com/suderio/orgdown/actions/workflows/ci.yml/badge.svg)
 
@@ -9,7 +9,7 @@ Orgdown is a **VSCode extension** that extracts code blocks from Markdown files 
 ### From VSCode Marketplace
 1. Open VSCode.
 2. Go to **Extensions** (`Ctrl+Shift+X`).
-3. Search for **Markdown Tangle**.
+3. Search for **Orgdown**.
 4. Click **Install**.
 
 ### Manual Installation
@@ -28,17 +28,18 @@ Orgdown is a **VSCode extension** that extracts code blocks from Markdown files 
 3. Code blocks are saved as files based on their language or `:tangle` directive.
 
 ### Example Markdown File
-```markdown
-   # Example
+~~~markdown
+# Example
 
-   ```javascript :tangle=script.js
-   console.log("Hello, world!");
-   ```
-
-   ```python :tangle=script.py
-   print("Hello, world!")
-   ```
+```javascript :tangle=script.js
+console.log("Hello, world!");
 ```
+
+```python :tangle=script.py
+print("Hello, world!")
+```
+~~~
+
 
 Running **Tangle Code Blocks** will create `script.js` and `script.py` with their respective contents.
 
@@ -93,7 +94,7 @@ Modify settings in `settings.json`:
 
 ### Extension is not working or throwing errors
 - Restart VSCode and try again.
-- Check the **VSCode Output Panel** (`View > Output`) and select **Markdown Tangle** from the dropdown for logs.
+- Check the **VSCode Output Panel** (`View > Output`) and select **Orgdown** from the dropdown for logs.
 - Run `npm test` to verify any issues in the extension.
 - Update VSCode to the latest version.
 
