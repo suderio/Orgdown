@@ -2,7 +2,7 @@
 
 ![Build Status](https://github.com/suderio/orgdown/actions/workflows/ci.yml/badge.svg)
 
-## 🚀 Overview
+## Overview
 Orgdown is a **VSCode extension** that extracts code blocks from Markdown files and saves them into separate files based on their language. This allows for literate programming and better code organization.
 
 ## 📥 Installation
@@ -29,15 +29,15 @@ Orgdown is a **VSCode extension** that extracts code blocks from Markdown files 
 
 ### Example Markdown File
 ```markdown
-# Example
+   # Example
 
-```javascript :tangle=script.js
-console.log("Hello, world!");
-```
+   ```javascript :tangle=script.js
+   console.log("Hello, world!");
+   ```
 
-```python :tangle=script.py
-print("Hello, world!")
-```
+   ```python :tangle=script.py
+   print("Hello, world!")
+   ```
 ```
 
 Running **Tangle Code Blocks** will create `script.js` and `script.py` with their respective contents.
@@ -75,7 +75,9 @@ Modify settings in `settings.json`:
    code .
    npm run test
    ```
-4. Submit a pull request with improvements!
+4. See [CONTRIBUTING](CONTRIBUTING.md)
+
+5. Submit a pull request with improvements!
 
 ## 🛠 Troubleshooting
 ### Code blocks are not extracted
@@ -111,5 +113,4 @@ Modify settings in `settings.json`:
 ## 📜 License
 This project is licensed under the **MIT License**. See [LICENSE](LICENSE) for details.
 
----
-### 🚀 Happy Coding with Markdown Tangle! 🎉
+
