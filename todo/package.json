@@ -1,0 +1,12 @@
+"contributes": {
+    "configuration": {
+        "title": "Markdown Tangle",
+        "properties": {
+            "markdownTangle.outputDirectory": {
+                "type": "string",
+                "default": "tangled",
+                "description": "Default directory to save tangled code files."
+            }
+        }
+    }
+}
