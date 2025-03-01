@@ -32,37 +32,40 @@ function activate(context) {
  * @param {vscode.TextDocument} document - The active Markdown document.
  */
 function extractAndTangle(document) {
-	const mdParser = markdownIt();
-	const content = document.getText();
-	const tokens = mdParser.parse(content, {});
-	
-	let codeBlocks = {};
+    const mdParser = markdownIt();
+    const content = document.getText();
+    const tokens = mdParser.parse(content, {});
+    
+    let codeBlocks = {};
 
-	for (let i = 0; i < tokens.length; i++) {
-		let token = tokens[i];
-		if (token.type === 'fence') {
-			let info = token.info.trim();
-			let match = info.match(/^([^\s]+)\s*:tangle=([^\s]+)/);
-			let currentLang, currentFile;
-			
-			if (match) {
-				currentLang = match[1];
-				currentFile = match[2];
-			} else {
-				currentLang = info;
-				currentFile = path.basename(document.fileName, '.md') + getExtension(currentLang);
-			}
-			
-			if (!codeBlocks[currentFile]) {
-				codeBlocks[currentFile] = [];
-			}
-			codeBlocks[currentFile].push(token.content);
-		}
-	}
+    for (let i = 0; i < tokens.length; i++) {
+        let token = tokens[i];
+        if (token.type === 'fence') {
+            let info = token.info.trim();
+            let match = info.match(/^([^\s]+)\s*:tangle=([^\s]+)/);
+            let currentLang, currentFile;
+            
+            if (match) {
+                currentLang = match[1];
+                currentFile = match[2];
+                // Ensure the file has the correct extension
+                if (!currentFile.endsWith(getExtension(currentLang))) {
+                    currentFile += getExtension(currentLang);
+                }
+            } else {
+                currentLang = info;
+                currentFile = path.basename(document.fileName, '.md') + getExtension(currentLang);
+            }
+            
+            if (!codeBlocks[currentFile]) {
+                codeBlocks[currentFile] = [];
+            }
+            codeBlocks[currentFile].push(token.content);
+        }
+    }
 
-	writeFiles(document, codeBlocks);
+    writeFiles(document, codeBlocks);
 }
-
 
 /**
  * Determines the file extension based on the language.
@@ -83,9 +86,29 @@ function getExtension(lang) {
 		css: '.css',
 		json: '.json',
 		yaml: '.yaml',
-		shell: '.sh'
+		shell: '.sh',
+		bash: '.sh',
+		ruby: '.rb',
+		php: '.php',
+		swift: '.swift',
+		kotlin: '.kt',
+		scala: '.scala',
+		perl: '.pl',
+		lua: '.lua',
+		haskell: '.hs',
+		elixir: '.ex',
+		erlang: '.erl',
+		dart: '.dart',
+		r: '.r',
+		matlab: '.m',
+		vb: '.vb',
+		powershell: '.ps1',
+		sql: '.sql',
+		xml: '.xml',
+		txt: '.txt',
+		md: '.md'
 	};
-	return extensions[lang] || '';  // Default to no extension if unknown
+	return extensions[lang] || 'txt';  // Default to no extension if unknown
 }
 
 /**

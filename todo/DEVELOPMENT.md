@@ -41,13 +41,13 @@ yo code
 It will prompt you with questions:
 
 1. **What type of extension do you want to create?** → Select **New Extension (JavaScript)**
-2. **What's the name of your extension?** → Enter: `markdown-tangle`
-3. **What identifier do you want to use?** → Enter: `markdown-tangle`
+2. **What's the name of your extension?** → Enter: `orgdown`
+3. **What identifier do you want to use?** → Enter: `orgdown`
 4. **What is the description?** → Enter: `Extracts and tangles code blocks from Markdown files`
 5. **Initialize a Git repository?** → Choose `Yes`
 6. **Which package manager to use?** → Select `npm`
 
-This will create a new folder `markdown-tangle/` with a basic extension template.
+This will create a new folder `orgdown/` with a basic extension template.
 
 ---
 
@@ -55,7 +55,7 @@ This will create a new folder `markdown-tangle/` with a basic extension template
 Navigate to the project folder:
 
 ```sh
-cd markdown-tangle
+cd orgdown
 code .
 ```
 
@@ -67,7 +67,7 @@ This will open VSCode with the extension's project files.
 After running `yo code`, the extension folder contains:
 
 ```
-markdown-tangle/
+orgdown/
 │── .vscode/            # Debugging configurations
 │── src/
 │   ├── extension.js    # Main extension logic
